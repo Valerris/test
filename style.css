@@ -19,17 +19,29 @@ body {
 
 .wrapper {
   padding: 0 1.66rem;
-  max-width: 45em;
-  margin: 10em auto;
+  max-width: 64rem;
+  margin: 10rem auto;
 }
 
 div:not(.wrapper):not(.inner) {
-  padding: 1em;
-  margin-bottom: 0.125em;
+  padding: 1.25rem;
+  margin-bottom: 0.125rem;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 0.25em;
   display: inline-block;
-  width: 49%;
+  width: 100%;
+}
+
+@media (min-width: 40em) {
+  div:not(.wrapper):not(.inner) {
+    width: 49%;
+  }
+}
+
+@media (min-width: 64em) {
+  div:not(.wrapper):not(.inner) {
+    width: 33%;
+  }
 }
 
 h1,
@@ -75,14 +87,14 @@ p {
 }
 
 h1 {
-  margin: 1.25em 0;
+  margin: 2.5rem 0;
 }
 h2 {
-  margin: 1em 0;
+  margin: 2rem 0;
 }
 h3 {
-  margin: 0.75em 0;
+  margin: 1.25rem 0;
 }
 p {
-  margin: 0.5em 0 3em;
+  margin: 0.5rem 0 3rem;
 }
