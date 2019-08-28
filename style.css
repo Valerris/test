@@ -32,15 +32,15 @@ div:not(.wrapper):not(.inner) {
 }
 
 h1 {
-  font-size: calc(1rem * 3 * 1.067);
+  font-size: calc(1.33rem * 3 * 1.067);
 }
 
 h2 {
-  font-size: calc(1rem * 2 * 1.067);
+  font-size: calc(1.33rem * 2 * 1.067);
 }
 
 h3 {
-  font-size: calc(1rem * 1.067);
+  font-size: calc(1.33rem * 1.067);
 }
 
 @media (min-width: 40em) {
