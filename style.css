@@ -21,6 +21,7 @@ body {
   padding: 0 1.66rem;
   max-width: 64rem;
   margin: 10rem auto;
+  background: yellow;
 }
 
 /* div:not(.wrapper):not(.inner) {
