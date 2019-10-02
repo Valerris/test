@@ -2,13 +2,13 @@
 
 :root {
   box-sizing: border-box;
-  font-size: calc(12px + (16 - 12) * (100vw - 320px) / (1400 - 320));
-  line-height: 1.33;
+  font-size: calc(12px + (16 - 12) * (100vw - 320px) / (1280 - 320));
+  line-height: 1.25rem;
 }
 
 body {
   font-family: "Open Sans Condensed", sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 *,
@@ -18,88 +18,91 @@ body {
 }
 
 .wrapper {
-  padding: 0 1.66rem;
-  max-width: 64rem;
-  margin: 10rem auto;
-}
-
-/* div:not(.wrapper):not(.inner) {
   padding: 1.25rem;
-  margin-bottom: 0.125rem;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 0.25em;
-  display: inline-block;
-  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  background-color: rgba(226, 226, 226, 0.5);
 }
 
-@media (min-width: 40em) {
-  div:not(.wrapper):not(.inner) {
-    width: 49%;
-  }
-}
-
-@media (min-width: 64em) {
-  div:not(.wrapper):not(.inner) {
-    width: 33%;
-  }
-} */
-
-div.cell {
-  background-color: rgba(0, 0, 0, 0.25);
+.block {
+  border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
+  padding: 1.25rem;
+  margin: 0.625rem 0;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.block:hover {
+  background-color: #eee;
+  border-color: #eee;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5),
+    0 2px 6px 2px rgba(60, 64, 67, 0.25);
 }
 
 h1,
 h2,
-h3 {
-  font-family: "Playfair Display", serif;
-}
-
-h1 {
-  font-size: calc(1.33rem * 3 * 1.067);
-}
-
-h2 {
-  font-size: calc(1.33rem * 2 * 1.067);
-}
-
-h3 {
-  font-size: calc(1.33rem * 1.067);
-}
-
-@media (min-width: 40em) {
-  h1 {
-    font-size: calc(1rem * 3 * 1.333);
-  }
-
-  h2 {
-    font-size: calc(1rem * 2 * 1.333);
-  }
-
-  h3 {
-    font-size: calc(1rem * 1.333);
-  }
-}
-
+h3,
+h4,
 p {
-  font-size: 1.33rem;
-}
-
-@media (min-width: 40em) {
-  p {
-    font-size: 1rem;
-  }
-}
-
-h1 {
-  margin: 2.5rem 0;
-}
-h2 {
-  margin: 2rem 0;
-}
-h3 {
+  font-family: "Playfair Display", serif;
+  width: 100%;
   margin: 1.25rem 0;
 }
-p {
-  margin: 0.5rem 0 3rem;
+
+h1 {
+  /* coeff 1.067 or 1.25 */
+  font-size: calc(1.25rem * 3 * 1.25);
+  line-height: calc(1.25rem * 4);
+}
+
+h2 {
+  font-size: calc(1.25rem * 2 * 1.25);
+  line-height: calc(1.25rem * 3);
+}
+
+h3 {
+  font-size: calc(1.25rem * 1.25);
+  line-height: calc(1.25rem * 2);
+}
+
+h4,
+h5,
+h6 {
+  font-size: calc(1.25rem * 0.75 * 1.25);
+  line-height: 1.25rem;
+}
+
+/* FLIP ANIMATION */
+
+/* .block {
+  display: inline-flex;
+  border-radius: 0.5rem;
+  width: 11.25rem;
+  height: 11.25rem;
+  background-color: #cecece;
+}
+
+.block.expanded {
+  width: 22.5rem;
+  height: 22.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+} */
+
+.block--filled {
+  border: none;
+  border-radius: 0.5rem;
+  height: 11.25rem;
+  width: 100%;
+  background-color: #cecece;
+  transition: 0.4s ease;
+}
+
+.block--filled.expanded {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
