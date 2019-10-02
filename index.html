@@ -18,8 +18,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="menu">
+      <div class="app-menu"></div>
+    </div>
     <div class="wrapper">
-      <div class="panel panel--top"></div>
+      <div class="panel panel--top">
+        <div class="menu--icon"></div>
+      </div>
       <div id="root" class="layout">
         <h1>Header 1</h1>
         <h2>Header 2</h2>
@@ -124,5 +129,26 @@
       </div>
       <!-- <div class="panel panel--bottom"></div> -->
     </div>
+
+    <script>
+      function toggleClassMenu() {
+        myMenu.classList.add("menu--animatable");
+        if (!myMenu.classList.contains("menu--visible")) {
+          myMenu.classList.add("menu--visible");
+        } else {
+          myMenu.classList.remove("menu--visible");
+        }
+      }
+
+      function OnTransitionEnd() {
+        myMenu.classList.remove("menu--animatable");
+      }
+
+      var myMenu = document.querySelector(".menu");
+      var oppMenu = document.querySelector(".menu--icon");
+      myMenu.addEventListener("transitionend", OnTransitionEnd, false);
+      oppMenu.addEventListener("click", toggleClassMenu, false);
+      myMenu.addEventListener("click", toggleClassMenu, false);
+    </script>
   </body>
 </html>
