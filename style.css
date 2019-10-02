@@ -18,26 +18,10 @@ body {
 }
 
 .wrapper {
-  padding: 1.25rem;
+  padding: 0.625rem 1.25rem;
   max-width: 64rem;
   margin: 0 auto;
   background-color: rgba(226, 226, 226, 0.5);
-}
-
-.block {
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 0.25rem;
-  padding: 1.25rem;
-  margin: 0.625rem 0;
-  cursor: pointer;
-  transition: 0.4s ease;
-}
-
-.block:hover {
-  background-color: #eee;
-  border-color: #eee;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5),
-    0 2px 6px 2px rgba(60, 64, 67, 0.25);
 }
 
 h1,
@@ -53,17 +37,17 @@ p {
 h1 {
   /* coeff 1.067 or 1.25 */
   font-size: calc(1.25rem * 3 * 1.25);
-  line-height: calc(1.25rem * 4);
+  line-height: calc(1.25rem * 6);
 }
 
 h2 {
   font-size: calc(1.25rem * 2 * 1.25);
-  line-height: calc(1.25rem * 3);
+  line-height: calc(1.25rem * 5);
 }
 
 h3 {
   font-size: calc(1.25rem * 1.25);
-  line-height: calc(1.25rem * 2);
+  line-height: calc(1.25rem * 4);
 }
 
 h4,
@@ -75,23 +59,30 @@ h6 {
 
 /* FLIP ANIMATION */
 
-/* .block {
-  display: inline-flex;
-  border-radius: 0.5rem;
-  width: 11.25rem;
-  height: 11.25rem;
-  background-color: #cecece;
+.block {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  padding: 0 1.25rem;
+  margin: 0.625rem 0;
+  cursor: pointer;
+  transition: 0.4s ease;
 }
 
-.block.expanded {
-  width: 22.5rem;
-  height: 22.5rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-} */
+.block:hover {
+  background-color: #eee;
+  border-color: #eee;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5),
+    0 2px 6px 2px rgba(60, 64, 67, 0.25);
+}
+
+.block-container {
+  display: flex;
+  margin-left: -0.625rem;
+  margin-right: -0.625rem;
+}
 
 .block--filled {
+  margin: 0.625rem;
   border: none;
   border-radius: 0.5rem;
   height: 11.25rem;
