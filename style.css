@@ -24,6 +24,7 @@ body {
   max-width: 64rem;
   margin: 0 auto;
   background-color: rgba(226, 226, 226, 0.5);
+  overflow: hidden;
 }
 
 h1,
@@ -61,7 +62,8 @@ h6 {
 
 /* FLIP ANIMATION */
 
-.menu-container {
+.menu-container,
+.panel-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -69,7 +71,7 @@ h6 {
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  z-index: 150;
+  z-index: 20;
 }
 
 .menu--visible {
@@ -133,11 +135,16 @@ h6 {
   cursor: pointer;
 }
 
+.panel-container {
+  z-index: 10;
+}
+
 .panel {
   background-color: #aeaeae;
   min-height: 2.5rem;
   width: 100%;
-  position: sticky;
+  position: absolute;
+  pointer-events: auto;
 }
 
 .panel--top {
@@ -156,6 +163,8 @@ h6 {
   cursor: pointer;
   transition: 0.4s ease;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  will-change: box-shadow, border-color, background-color;
+  transform: translateZ(0);
 }
 
 .block:hover {
@@ -167,23 +176,32 @@ h6 {
 
 .block-container {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin-left: -0.625rem;
   margin-right: -0.625rem;
+  overflow: hidden;
 }
 
 .block--filled {
   margin: 0.625rem;
   border: none;
+  margin-left: 0;
+  margin-right: 0;
   border-radius: 0.5rem;
   height: 11.25rem;
   width: 100%;
   background-color: #cecece;
-  transition: 0.4s ease;
 }
 
-/* .block--filled.expanded {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-} */
+.expanding {
+  transition: height 0.4s ease-out;
+}
+
+.collapsing {
+  transition: height 0.2s ease-in;
+}
+
+.block--filled.expanded {
+  height: 100vh;
+}

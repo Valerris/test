@@ -21,16 +21,19 @@
     <div class="menu-container">
       <div class="menu"></div>
     </div>
-    <div class="wrapper">
+    <div class="panel-container">
       <div class="panel panel--top">
         <div class="menu--icon"></div>
       </div>
+      <!-- <div class="panel panel--bottom"></div> -->
+    </div>
+    <div class="wrapper">
       <div id="root" class="layout">
         <h1>Header 1</h1>
         <h2>Header 2</h2>
 
         <div class="grid-x grid-margin-x">
-          <div class="cell medium-4 block">
+          <div class="cell medium-4 block" onclick="">
             <h3>Header 3</h3>
             <h4>Header 4</h4>
             <p>
@@ -43,7 +46,7 @@
               molestiae vitae a.
             </p>
           </div>
-          <div class="cell medium-4 block">
+          <div class="cell medium-4 block" onclick="">
             <h3>Header 3</h3>
             <h4>Header 4</h4>
             <p>
@@ -56,7 +59,7 @@
               molestiae vitae a.
             </p>
           </div>
-          <div class="cell medium-4 block">
+          <div class="cell medium-4 block" onclick="">
             <h3>Header 3</h3>
             <h4>Header 4</h4>
             <p>
@@ -69,7 +72,7 @@
               molestiae vitae a.
             </p>
           </div>
-          <div class="cell medium-4 block">
+          <div class="cell medium-4 block" onclick="">
             <h3>Header 3</h3>
             <h4>Header 4</h4>
             <p>
@@ -82,7 +85,7 @@
               molestiae vitae a.
             </p>
           </div>
-          <div class="cell medium-4 block">
+          <div class="cell medium-4 block" onclick="">
             <h3>Header 3</h3>
             <h4>Header 4</h4>
             <p>
@@ -95,7 +98,7 @@
               molestiae vitae a.
             </p>
           </div>
-          <div class="cell medium-4 block">
+          <div class="cell medium-4 block" onclick="">
             <h3>Header 3</h3>
             <h4>Header 4</h4>
             <p>
@@ -113,24 +116,15 @@
         <h2>Header 2</h2>
 
         <div class="block-container">
-          <div
-            class="block block--filled"
-            onclick="this.classList.toggle('expanded')"
-          ></div>
-          <div
-            class="block block--filled"
-            onclick="this.classList.toggle('expanded')"
-          ></div>
-          <div
-            class="block block--filled"
-            onclick="this.classList.toggle('expanded')"
-          ></div>
+          <div class="block block--filled" onclick=""></div>
+          <div class="block block--filled" onclick=""></div>
+          <div class="block block--filled" onclick=""></div>
         </div>
       </div>
-      <!-- <div class="panel panel--bottom"></div> -->
     </div>
 
     <script>
+      // Menu Toggle
       function toggleClassMenu() {
         menu.classList.add("menu--animatable");
         if (!menu.classList.contains("menu--visible")) {
@@ -149,6 +143,88 @@
       menu.addEventListener("transitionend", OnTransitionEnd, false);
       menuTrigger.addEventListener("click", toggleClassMenu, false);
       menu.addEventListener("click", toggleClassMenu, false);
+      //
+
+      // flip anim
+      function clickHandler() {
+        if (!this.classList.contains("expanded")) {
+          this.classList.add("expanding");
+          this.classList.add("expanded");
+          let collapsed = this.getBoundingClientRect();
+          this.classList.remove("expanded");
+          let expanded = this.getBoundingClientRect();
+          this.classList.remove("expanded");
+
+          let invertedTop = collapsed.top - expanded.top;
+          let invertedLeft = collapsed.left - expanded.left;
+          let invertedWidth = collapsed.width / expanded.width;
+          let invertedHeight = collapsed.height / expanded.height;
+
+          this.style.trasformOrigin = "top left";
+
+          this.style.transform =
+            "translateX(" +
+            invertedLeft +
+            "px) translateY(" +
+            invertedTop +
+            "px) translateZ(0) scaleX(" +
+            invertedWidth +
+            ") scaleY(" +
+            invertedHeight +
+            ")";
+
+          this.addEventListener("transitionend", function handler(e) {
+            this.style.transform = "";
+            this.style.transformOrigin = "";
+            this.classList.remove("expanding");
+            this.classList.add("expanded");
+            this.removeEventListener("transitionend", handler);
+          });
+        } else if (this.classList.contains("expanded")) {
+          requestAnimationFrame(function() {
+            this.classList.add("collapsing");
+            this.classList.remove("expanded");
+            this.classList.add("collapsed");
+            var collapsed = this.getBoundingClientRect();
+            this.classList.remove("collapsed");
+            this.classList.add("expanded");
+            var expanded = this.getBoundingClientRect();
+
+            var invertedTop = collapsed.top - expanded.top;
+            var invertedLeft = collapsed.left - expanded.left;
+            var invertedWidth = collapsed.width / expanded.width;
+            var invertedHeight = collapsed.height / expanded.height;
+
+            this.style.transformOrigin = "top left";
+            this.style.transform =
+              "translate(" +
+              invertedLeft +
+              "px, " +
+              invertedTop +
+              "px) scale(" +
+              invertedWidth +
+              ", " +
+              invertedHeight +
+              ")";
+
+            this.addEventListener("transitionend", function handler(e) {
+              this.style.transform = "";
+              this.style.transformOrigin = "";
+              this.classList.remove("collapsing");
+              this.classList.remove("expanded");
+              this.classList.add("collapsed");
+              this.removeEventListener("transitionend", handler);
+            });
+          });
+        }
+      }
+
+      let blocks = document.querySelectorAll(".block--filled");
+
+      for (let curr of blocks) {
+        curr.onclick = clickHandler;
+      }
+      //
     </script>
   </body>
 </html>
