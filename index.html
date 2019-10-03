@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="menu">
-      <div class="app-menu"></div>
+    <div class="menu-container">
+      <div class="menu"></div>
     </div>
     <div class="wrapper">
       <div class="panel panel--top">
@@ -132,23 +132,23 @@
 
     <script>
       function toggleClassMenu() {
-        myMenu.classList.add("menu--animatable");
-        if (!myMenu.classList.contains("menu--visible")) {
-          myMenu.classList.add("menu--visible");
+        menu.classList.add("menu--animatable");
+        if (!menu.classList.contains("menu--visible")) {
+          menu.classList.add("menu--visible");
         } else {
-          myMenu.classList.remove("menu--visible");
+          menu.classList.remove("menu--visible");
         }
       }
 
       function OnTransitionEnd() {
-        myMenu.classList.remove("menu--animatable");
+        menu.classList.remove("menu--animatable");
       }
 
-      var myMenu = document.querySelector(".menu");
-      var oppMenu = document.querySelector(".menu--icon");
-      myMenu.addEventListener("transitionend", OnTransitionEnd, false);
-      oppMenu.addEventListener("click", toggleClassMenu, false);
-      myMenu.addEventListener("click", toggleClassMenu, false);
+      var menu = document.querySelector(".menu-container");
+      var menuTrigger = document.querySelector(".menu--icon");
+      menu.addEventListener("transitionend", OnTransitionEnd, false);
+      menuTrigger.addEventListener("click", toggleClassMenu, false);
+      menu.addEventListener("click", toggleClassMenu, false);
     </script>
   </body>
 </html>

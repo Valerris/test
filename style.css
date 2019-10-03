@@ -61,7 +61,7 @@ h6 {
 
 /* FLIP ANIMATION */
 
-.menu {
+.menu-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -76,7 +76,7 @@ h6 {
   pointer-events: auto;
 }
 
-.app-menu {
+.menu {
   background-color: #fff;
   color: #fff;
   position: relative;
@@ -93,20 +93,20 @@ h6 {
   pointer-events: auto;
 }
 
-.menu--visible .app-menu {
+.menu--visible .menu {
   -webkit-transform: none;
   transform: none;
 }
 
-.menu--animatable .app-menu {
+.menu--animatable .menu {
   transition: all 130ms ease-in;
 }
 
-.menu--visible.menu--animatable .app-menu {
+.menu--visible.menu--animatable .menu {
   transition: all 330ms ease-out;
 }
 
-.menu:after {
+.menu-container:after {
   content: "";
   display: block;
   position: absolute;
@@ -121,7 +121,7 @@ h6 {
   transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
 }
 
-.menu--visible.menu:after {
+.menu--visible.menu-container:after {
   opacity: 1;
   pointer-events: auto;
 }
@@ -155,6 +155,7 @@ h6 {
   margin: 0.625rem 0;
   cursor: pointer;
   transition: 0.4s ease;
+  -webkit-tap-highlight: rgba(0, 0, 0, 0);
 }
 
 .block:hover {
