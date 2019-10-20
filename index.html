@@ -123,6 +123,10 @@
       </div>
     </div>
 
+    <div class="modal-container">
+      <div class="block block--filled expanded"></div>
+    </div>
+
     <script>
       // Menu Toggle
       function toggleClassMenu() {
@@ -146,80 +150,45 @@
       //
 
       // flip anim
-      function clickHandler() {
-        if (!this.classList.contains("expanded")) {
-          this.classList.add("expanding");
-          this.classList.add("expanded");
-          let collapsed = this.getBoundingClientRect();
-          this.classList.remove("expanded");
-          let expanded = this.getBoundingClientRect();
-          this.classList.remove("expanded");
 
-          let invertedTop = collapsed.top - expanded.top;
-          let invertedLeft = collapsed.left - expanded.left;
-          let invertedWidth = collapsed.width / expanded.width;
-          let invertedHeight = collapsed.height / expanded.height;
+      let block = document.querySelector(".block--filled");
+      let blockExpanded = document.querySelector(".block--filled.expanded");
+      let modalCont = document.querySelector(".modal-container");
 
-          this.style.trasformOrigin = "top left";
+      function flip() {
+        let first = block.getBoundingClientRect();
+        let last = blockExpanded.getBoundingClientRect();
 
-          this.style.transform =
-            "translateX(" +
-            invertedLeft +
-            "px) translateY(" +
-            invertedTop +
-            "px) translateZ(0) scaleX(" +
-            invertedWidth +
-            ") scaleY(" +
-            invertedHeight +
-            ")";
+        let dx = first.left - last.left;
+        let dy = first.top - last.top;
+        let dw = first.width / last.width;
+        let dh = first.height / last.height;
 
-          this.addEventListener("transitionend", function handler(e) {
-            this.style.transform = "";
-            this.style.transformOrigin = "";
-            this.classList.remove("expanding");
-            this.classList.add("expanded");
-            this.removeEventListener("transitionend", handler);
-          });
-        } else if (this.classList.contains("expanded")) {
-          requestAnimationFrame(function() {
-            this.classList.add("collapsing");
-            this.classList.remove("expanded");
-            this.classList.add("collapsed");
-            var collapsed = this.getBoundingClientRect();
-            this.classList.remove("collapsed");
-            this.classList.add("expanded");
-            var expanded = this.getBoundingClientRect();
+        blockExpanded.style.transform = `scale(${dw}, ${dh}) translate3d(${dx}px, ${dy}px, 0)`;
+      }
 
-            var invertedTop = collapsed.top - expanded.top;
-            var invertedLeft = collapsed.left - expanded.left;
-            var invertedWidth = collapsed.width / expanded.width;
-            var invertedHeight = collapsed.height / expanded.height;
+      function clickHandler(e) {
+        blockExpanded.classList.add("trans");
 
-            this.style.transformOrigin = "top left";
-            this.style.transform =
-              "translate(" +
-              invertedLeft +
-              "px, " +
-              invertedTop +
-              "px) scale(" +
-              invertedWidth +
-              ", " +
-              invertedHeight +
-              ")";
+        blockExpanded.style.transform = `scale(1, 1) translate3d(0, 0, 0)`;
+        modalCont.style.opacity = 1;
+        modalCont.style.pointerEvents = "auto";
 
-            this.addEventListener("transitionend", function handler(e) {
-              this.style.transform = "";
-              this.style.transformOrigin = "";
-              this.classList.remove("collapsing");
-              this.classList.remove("expanded");
-              this.classList.add("collapsed");
-              this.removeEventListener("transitionend", handler);
-            });
-          });
-        }
+        modalCont.onclick = e => {
+          modalCont.style.pointerEvents = modalCont.style.opacity = blockExpanded.style.opacity = modalCont.onclick = null;
+
+          flip();
+        };
+
+        blockExpanded.ontransitionend = () => {
+          blockExpanded.classList.remove("trans");
+          blockExpanded.ontransitionend = null;
+        };
       }
 
       let blocks = document.querySelectorAll(".block--filled");
+
+      flip();
 
       for (let curr of blocks) {
         curr.onclick = clickHandler;
