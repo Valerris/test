@@ -201,8 +201,12 @@ h6 {
   transition: none;
 }
 
-.expanded.trans {
-  transition: transform 0.5s ease-in;
+.expanded.transin {
+  transition: transform 0.2s ease-in;
+}
+
+.expanded.transout {
+  transition: transform 0.1s ease-out;
 }
 
 .modal-container {

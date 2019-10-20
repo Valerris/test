@@ -164,24 +164,29 @@
         let dw = first.width / last.width;
         let dh = first.height / last.height;
 
-        blockExpanded.style.transform = `scale(${dw}, ${dh}) translate3d(${dx}px, ${dy}px, 0)`;
+        blockExpanded.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${dw}, ${dh})`;
       }
 
       function clickHandler(e) {
-        blockExpanded.classList.add("trans");
+        e.stopPropagation();
+        blockExpanded.classList.add("transin");
 
-        blockExpanded.style.transform = `scale(1, 1) translate3d(0, 0, 0)`;
+        blockExpanded.style.transform = `translate3d(0, 0, 0) scale(1, 1)`;
         modalCont.style.opacity = 1;
         modalCont.style.pointerEvents = "auto";
 
         modalCont.onclick = e => {
+          blockExpanded.classList.add("transout");
           modalCont.style.pointerEvents = modalCont.style.opacity = blockExpanded.style.opacity = modalCont.onclick = null;
-
+          blockExpanded.ontransitionend = () => {
+            blockExpanded.classList.remove("transout");
+            blockExpanded.ontransitionend = null;
+          };
           flip();
         };
 
         blockExpanded.ontransitionend = () => {
-          blockExpanded.classList.remove("trans");
+          blockExpanded.classList.remove("transin");
           blockExpanded.ontransitionend = null;
         };
       }
