@@ -155,8 +155,8 @@
       let blockExpanded = document.querySelector(".block--filled.expanded");
       let modalCont = document.querySelector(".modal-container");
 
-      function flip() {
-        let first = block.getBoundingClientRect();
+      function flip(el) {
+        let first = el.getBoundingClientRect();
         let last = blockExpanded.getBoundingClientRect();
 
         let dx = first.left - last.left;
@@ -168,34 +168,22 @@
       }
 
       function clickHandler(e) {
-        e.stopPropagation();
-        blockExpanded.classList.add("transin");
+        flip(this);
 
-        blockExpanded.style.transform = `translate3d(0, 0, 0) scale(1, 1)`;
+        blockExpanded.classList.add("trans");
+
         modalCont.style.opacity = 1;
-        modalCont.style.pointerEvents = "auto";
-
-        modalCont.onclick = e => {
-          blockExpanded.classList.add("transout");
-          modalCont.style.pointerEvents = modalCont.style.opacity = blockExpanded.style.opacity = modalCont.onclick = null;
-          blockExpanded.ontransitionend = () => {
-            blockExpanded.classList.remove("transout");
-            blockExpanded.ontransitionend = null;
-          };
-          flip();
-        };
 
         blockExpanded.ontransitionend = () => {
-          blockExpanded.classList.remove("transin");
+          blockExpanded.classList.remove("trans");
           blockExpanded.ontransitionend = null;
         };
       }
 
       let blocks = document.querySelectorAll(".block--filled");
 
-      flip();
-
       for (let curr of blocks) {
+        flip(curr);
         curr.onclick = clickHandler;
       }
       //
