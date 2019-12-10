@@ -1,16 +1,27 @@
 @charset "UTF-8";
 
+/* HORIZONTAL: 20px
+   VERTICAL: 20px */
+
 :root {
   box-sizing: border-box;
-  font-size: calc(14px + (16 - 14) * (100vw - 320px) / (1280 - 320));
+  font-size: calc(12px + (16 - 12) * (100vw - 320px) / (1366 - 320));
   line-height: 1.25rem;
+  /* vars */
+  --body: #a2a4a2;
+  --main: #f7f6f4;
+  --panel: #cea251;
+  --menu: #f7f6f4;
+  --font: #2a2029;
 }
 
 body {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 1rem;
   text-indent: 0;
   -webkit-font-smoothing: antialiased;
+  color: var(--font, #000);
 }
 
 *,
@@ -19,38 +30,54 @@ body {
   box-sizing: inherit;
 }
 
+.wrapper,
 .layout {
-  padding: 0.625rem 1.25rem;
+  overflow: hidden;
+}
+
+.layout {
+  padding: calc(1.25rem * 2 + 18px) 1.25rem 1.25rem;
   max-width: 64rem;
   margin: 0 auto;
-  background-color: rgba(226, 226, 226, 0.5);
-  overflow: hidden;
+  background-color: var(--main, rgba(226, 226, 226, 0.5));
+  transition: filter 0.4s ease 0.2s, transform 0.2s ease;
+  will-change: filter, transform;
+  transform: scale(1) translateZ(0);
+  transform-style: preserve-3d;
+}
+
+.menu--open .layout {
+  filter: blur(5px);
+  transform: scale(0.9);
 }
 
 h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p {
   font-family: "Playfair Display", serif;
   width: 100%;
-  margin: 1.25rem 0;
+  margin: 0 0 1.25rem 0;
+  color: inherit;
 }
 
 h1 {
   /* coeff 1.067 or 1.25 */
   font-size: calc(1.25rem * 3 * 1.25);
-  line-height: calc(1.25rem * 6);
+  line-height: calc(1.25rem * 4);
 }
 
 h2 {
   font-size: calc(1.25rem * 2 * 1.25);
-  line-height: calc(1.25rem * 5);
+  line-height: calc(1.25rem * 3);
 }
 
 h3 {
   font-size: calc(1.25rem * 1.25);
-  line-height: calc(1.25rem * 4);
+  line-height: calc(1.25rem * 2);
 }
 
 h4,
@@ -60,7 +87,7 @@ h6 {
   line-height: 1.25rem;
 }
 
-/* FLIP ANIMATION */
+/* FLIP MENU ANIMATION */
 
 .menu-container,
 .panel-container {
@@ -79,10 +106,10 @@ h6 {
 }
 
 .menu {
-  background-color: #fff;
-  color: #fff;
+  padding: 1.25rem;
+  background-color: var(--menu, #fff);
   position: relative;
-  max-width: 400px;
+  max-width: 250px;
   width: 90%;
   height: 100%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
@@ -94,16 +121,31 @@ h6 {
   pointer-events: auto;
 }
 
+.menu > ul {
+  margin: 0 0 0 -0.625rem;
+  padding: 0;
+  list-style: none;
+}
+
+.menu > ul > li > a {
+  display: inline-block;
+  color: currentColor;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.625rem;
+}
+
 .menu--visible .menu {
   transform: none;
 }
 
-.menu--animatable .menu {
-  transition: all 130ms ease-in;
+.menu {
+  transition: all 250ms ease-out;
 }
 
-.menu--visible.menu--animatable .menu {
-  transition: all 330ms ease-out;
+.menu--visible .menu {
+  transition: all 187.5ms ease-in;
 }
 
 .menu-container:after {
@@ -127,10 +169,20 @@ h6 {
 }
 
 .menu--icon {
-  min-height: 2.5rem;
-  width: 2.5rem;
+  height: 18px;
+  width: 18px;
   background: url("./burger.svg") no-repeat center center;
   cursor: pointer;
+  position: relative;
+}
+
+.menu--icon::before {
+  content: "";
+  position: absolute;
+  top: -1.25rem;
+  left: -1.25rem;
+  bottom: -1.25rem;
+  right: -1.25rem;
 }
 
 .panel-container {
@@ -138,7 +190,8 @@ h6 {
 }
 
 .panel {
-  background-color: #aeaeae;
+  padding: 1.25rem;
+  background-color: var(--panel, #aeaeae);
   min-height: 2.5rem;
   width: 100%;
   position: absolute;
@@ -156,20 +209,41 @@ h6 {
 .block {
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
-  padding: 0 1.25rem;
+  padding: 1.775rem;
   margin: 0.625rem 0;
   cursor: pointer;
-  transition: 0.4s ease;
+  transition: border-color 0.4s ease, background-color 0.4s ease;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  will-change: box-shadow, border-color, background-color;
+  will-change: border-color, background-color;
   transform: translateZ(0);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5),
+    0 2px 6px 2px rgba(60, 64, 67, 0.25);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  will-change: opacity;
+  transform: translateZ(0);
+  transform-style: preserve-3d;
 }
 
 .block:hover {
   background-color: #fefefe;
   border-color: #eee;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5),
-    0 2px 6px 2px rgba(60, 64, 67, 0.25);
+}
+
+.block:hover::before {
+  opacity: 1;
 }
 
 .block-container {
@@ -187,36 +261,4 @@ h6 {
   border-radius: 0.5rem;
   height: 11.25rem;
   background-color: #cecece;
-}
-
-.block--filled.expanded {
-  flex-basis: 100%;
-  height: 100%;
-  min-height: 100%;
-  display: flex;
-  transform-origin: top left;
-  transform: translateZ(0);
-  will-change: transform;
-  transition: none;
-}
-
-.expanded.trans {
-  transition: transform 0.2s ease-in;
-}
-
-.modal-container {
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  padding: 5rem;
-  background-color: hsla(127, 15%, 90%, 0.5);
-  opacity: 0.5;
-  transition: opacity 0.2s linear;
-  transform: translateZ(0);
-  will-change: opacity;
-  pointer-events: none;
 }

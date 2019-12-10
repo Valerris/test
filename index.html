@@ -1,192 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Test</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Playfair+Display:400,700&display=swap&subset=cyrillic"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="normalize.css" />
-    <link rel="stylesheet" href="foundation-dev.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="menu-container">
-      <div class="menu"></div>
-    </div>
-    <div class="panel-container">
-      <div class="panel panel--top">
-        <div class="menu--icon"></div>
-      </div>
-      <!-- <div class="panel panel--bottom"></div> -->
-    </div>
-    <div class="wrapper">
-      <div id="root" class="layout">
-        <h1>Header 1</h1>
-        <h2>Header 2</h2>
 
-        <div class="grid-x grid-margin-x">
-          <div class="cell medium-4 block" onclick="">
-            <h3>Header 3</h3>
-            <h4>Header 4</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
-              aliquam voluptatibus magnam, commodi fugit totam ipsam atque
-              recusandae assumenda consequuntur ullam voluptates ea modi
-              cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
-              repellendus provident suscipit aut asperiores autem tenetur ipsa
-              distinctio, veniam commodi, repudiandae iste voluptate enim
-              molestiae vitae a.
-            </p>
-          </div>
-          <div class="cell medium-4 block" onclick="">
-            <h3>Header 3</h3>
-            <h4>Header 4</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
-              aliquam voluptatibus magnam, commodi fugit totam ipsam atque
-              recusandae assumenda consequuntur ullam voluptates ea modi
-              cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
-              repellendus provident suscipit aut asperiores autem tenetur ipsa
-              distinctio, veniam commodi, repudiandae iste voluptate enim
-              molestiae vitae a.
-            </p>
-          </div>
-          <div class="cell medium-4 block" onclick="">
-            <h3>Header 3</h3>
-            <h4>Header 4</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
-              aliquam voluptatibus magnam, commodi fugit totam ipsam atque
-              recusandae assumenda consequuntur ullam voluptates ea modi
-              cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
-              repellendus provident suscipit aut asperiores autem tenetur ipsa
-              distinctio, veniam commodi, repudiandae iste voluptate enim
-              molestiae vitae a.
-            </p>
-          </div>
-          <div class="cell medium-4 block" onclick="">
-            <h3>Header 3</h3>
-            <h4>Header 4</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
-              aliquam voluptatibus magnam, commodi fugit totam ipsam atque
-              recusandae assumenda consequuntur ullam voluptates ea modi
-              cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
-              repellendus provident suscipit aut asperiores autem tenetur ipsa
-              distinctio, veniam commodi, repudiandae iste voluptate enim
-              molestiae vitae a.
-            </p>
-          </div>
-          <div class="cell medium-4 block" onclick="">
-            <h3>Header 3</h3>
-            <h4>Header 4</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
-              aliquam voluptatibus magnam, commodi fugit totam ipsam atque
-              recusandae assumenda consequuntur ullam voluptates ea modi
-              cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
-              repellendus provident suscipit aut asperiores autem tenetur ipsa
-              distinctio, veniam commodi, repudiandae iste voluptate enim
-              molestiae vitae a.
-            </p>
-          </div>
-          <div class="cell medium-4 block" onclick="">
-            <h3>Header 3</h3>
-            <h4>Header 4</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
-              aliquam voluptatibus magnam, commodi fugit totam ipsam atque
-              recusandae assumenda consequuntur ullam voluptates ea modi
-              cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
-              repellendus provident suscipit aut asperiores autem tenetur ipsa
-              distinctio, veniam commodi, repudiandae iste voluptate enim
-              molestiae vitae a.
-            </p>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Test</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Playfair+Display:400,700&display=swap&subset=cyrillic" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="normalize.css" />
+  <link rel="stylesheet" href="foundation-dev.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="menu-container">
+    <div class="menu">
+      <h3>Menu block.</h3>
+      <ul>
+        <li><a href="#Item-1" target="_self">Item-1</a></li>
+        <li><a href="#Item-2" target="_self">Item-2</a></li>
+        <li><a href="#Item-3" target="_self">Item-3</a></li>
+        <li><a href="#Item-4" target="_self">Item-4</a></li>
+        <li><a href="#Item-5" target="_self">Item-5</a></li>
+        <li><a href="#Item-6" target="_self">Item-6</a></li>
+        <li><a href="#Item-7" target="_self">Item-7</a></li>
+        <li><a href="#Item-8" target="_self">Item-8</a></li>
+        <li><a href="#Item-9" target="_self">Item-9</a></li>
+      </ul>
+    </div>
+  </nav>
+  <aside class="panel-container">
+    <div class="panel panel--top">
+      <div class="menu--icon"></div>
+    </div>
+    <!-- <div class="panel panel--bottom"></div> -->
+  </aside>
+  <div class="wrapper">
+    <main id="root" class="layout">
+      <h1>Header 1</h1>
+      <h2>Header 2</h2>
+
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-4 block" onclick="">
+          <h3>Header 3</h3>
+          <h4>Header 4</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            aliquam voluptatibus magnam, commodi fugit totam ipsam atque
+            recusandae assumenda consequuntur ullam voluptates ea modi
+            cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
+            repellendus provident suscipit aut asperiores autem tenetur ipsa
+            distinctio, veniam commodi, repudiandae iste voluptate enim
+            molestiae vitae a.
+          </p>
         </div>
-
-        <h2>Header 2</h2>
-
-        <div class="block-container">
-          <div class="block block--filled" onclick=""></div>
-          <div class="block block--filled" onclick=""></div>
-          <div class="block block--filled" onclick=""></div>
+        <div class="cell medium-4 block" onclick="">
+          <h3>Header 3</h3>
+          <h4>Header 4</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            aliquam voluptatibus magnam, commodi fugit totam ipsam atque
+            recusandae assumenda consequuntur ullam voluptates ea modi
+            cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
+            repellendus provident suscipit aut asperiores autem tenetur ipsa
+            distinctio, veniam commodi, repudiandae iste voluptate enim
+            molestiae vitae a.
+          </p>
+        </div>
+        <div class="cell medium-4 block" onclick="">
+          <h3>Header 3</h3>
+          <h4>Header 4</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            aliquam voluptatibus magnam, commodi fugit totam ipsam atque
+            recusandae assumenda consequuntur ullam voluptates ea modi
+            cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
+            repellendus provident suscipit aut asperiores autem tenetur ipsa
+            distinctio, veniam commodi, repudiandae iste voluptate enim
+            molestiae vitae a.
+          </p>
+        </div>
+        <div class="cell medium-4 block" onclick="">
+          <h3>Header 3</h3>
+          <h4>Header 4</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            aliquam voluptatibus magnam, commodi fugit totam ipsam atque
+            recusandae assumenda consequuntur ullam voluptates ea modi
+            cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
+            repellendus provident suscipit aut asperiores autem tenetur ipsa
+            distinctio, veniam commodi, repudiandae iste voluptate enim
+            molestiae vitae a.
+          </p>
+        </div>
+        <div class="cell medium-4 block" onclick="">
+          <h3>Header 3</h3>
+          <h4>Header 4</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            aliquam voluptatibus magnam, commodi fugit totam ipsam atque
+            recusandae assumenda consequuntur ullam voluptates ea modi
+            cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
+            repellendus provident suscipit aut asperiores autem tenetur ipsa
+            distinctio, veniam commodi, repudiandae iste voluptate enim
+            molestiae vitae a.
+          </p>
+        </div>
+        <div class="cell medium-4 block" onclick="">
+          <h3>Header 3</h3>
+          <h4>Header 4</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            aliquam voluptatibus magnam, commodi fugit totam ipsam atque
+            recusandae assumenda consequuntur ullam voluptates ea modi
+            cupiditate, repellat. Obcaecati, ad officiis iure illum ullam
+            repellendus provident suscipit aut asperiores autem tenetur ipsa
+            distinctio, veniam commodi, repudiandae iste voluptate enim
+            molestiae vitae a.
+          </p>
         </div>
       </div>
-    </div>
 
-    <div class="modal-container">
-      <div class="block block--filled expanded"></div>
-    </div>
+      <h2>Header 2</h2>
 
-    <script>
-      // Menu Toggle
-      function toggleClassMenu() {
-        menu.classList.add("menu--animatable");
-        if (!menu.classList.contains("menu--visible")) {
-          menu.classList.add("menu--visible");
-        } else {
-          menu.classList.remove("menu--visible");
-        }
+      <div class="block-container">
+        <div class="block block--filled" onclick=""></div>
+        <div class="block block--filled" onclick=""></div>
+        <div class="block block--filled" onclick=""></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Menu Toggle
+    function toggleClassMenu() {
+      menu.classList.add("menu--animatable");
+      if (!menu.classList.contains("menu--visible")) {
+        menu.classList.add("menu--visible");
+        document.body.classList.add("menu--open");
+      } else {
+        menu.classList.remove("menu--visible");
+        document.body.classList.remove("menu--open");
       }
+    }
 
-      function OnTransitionEnd() {
-        menu.classList.remove("menu--animatable");
-      }
+    function OnTransitionEnd() {
+      menu.classList.remove("menu--animatable");
+    }
 
-      var menu = document.querySelector(".menu-container");
-      var menuTrigger = document.querySelector(".menu--icon");
-      menu.addEventListener("transitionend", OnTransitionEnd, false);
-      menuTrigger.addEventListener("click", toggleClassMenu, false);
-      menu.addEventListener("click", toggleClassMenu, false);
-      //
+    var menu = document.querySelector(".menu-container");
+    var menuTrigger = document.querySelector(".menu--icon");
+    menu.addEventListener("transitionend", OnTransitionEnd);
+    menuTrigger.addEventListener("click", toggleClassMenu);
+    menu.addEventListener("click", toggleClassMenu);
+    //
+  </script>
+</body>
 
-      // flip anim
-
-      let block = document.querySelector(".block--filled");
-      let blockExpanded = document.querySelector(".block--filled.expanded");
-      let modalCont = document.querySelector(".modal-container");
-
-      function flip(el) {
-        let first = el.getBoundingClientRect();
-        let last = blockExpanded.getBoundingClientRect();
-
-        let dx = first.left - last.left;
-        let dy = first.top - last.top;
-        let dw = first.width / last.width;
-        let dh = first.height / last.height;
-
-        blockExpanded.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${dw}, ${dh})`;
-      }
-
-      function clickHandler(e) {
-        flip(this);
-
-        blockExpanded.classList.add("trans");
-
-        modalCont.style.opacity = 1;
-
-        blockExpanded.ontransitionend = () => {
-          blockExpanded.classList.remove("trans");
-          blockExpanded.ontransitionend = null;
-        };
-      }
-
-      let blocks = document.querySelectorAll(".block--filled");
-
-      for (let curr of blocks) {
-        flip(curr);
-        curr.onclick = clickHandler;
-      }
-      //
-    </script>
-  </body>
 </html>
